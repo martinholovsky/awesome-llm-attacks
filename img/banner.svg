@@ -1,0 +1,63 @@
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Awesome LLM Attacks">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11161E"/>
+      <stop offset="1" stop-color="#0B0E14"/>
+    </linearGradient>
+    <linearGradient id="bpanel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B222C"/>
+      <stop offset="1" stop-color="#0B0E14"/>
+    </linearGradient>
+    <radialGradient id="bnode" cx="0.42" cy="0.36" r="0.75">
+      <stop offset="0" stop-color="#9BFFEC"/>
+      <stop offset="0.45" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#0C6F62"/>
+    </radialGradient>
+    <linearGradient id="bbolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF6A72"/>
+      <stop offset="1" stop-color="#CE1322"/>
+    </linearGradient>
+    <filter id="bgR" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="bgC" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="300" rx="28" fill="url(#bg)" stroke="#222A35" stroke-width="2"/>
+
+  <!-- icon (concept A) -->
+  <g transform="translate(23,22) scale(0.5)">
+    <polygon points="256,46 437.9,151 437.9,361 256,466 74.1,361 74.1,151" fill="url(#bpanel)" stroke="#30363D" stroke-width="11" stroke-linejoin="round"/>
+    <polygon points="256,46 437.9,151 437.9,361 256,466 74.1,361 74.1,151" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-opacity="0.22" stroke-linejoin="round"/>
+    <g stroke="#2DD4BF" stroke-width="4" stroke-opacity="0.5" fill="none" stroke-linecap="round">
+      <line x1="256" y1="262" x2="329.7" y2="210.4"/><line x1="256" y1="262" x2="344.6" y2="277.6"/>
+      <line x1="256" y1="262" x2="301" y2="339.9"/><line x1="256" y1="262" x2="204.4" y2="335.7"/>
+      <line x1="256" y1="262" x2="166" y2="262"/>
+    </g>
+    <g fill="url(#bnode)" filter="url(#bgC)">
+      <circle cx="329.7" cy="210.4" r="13"/><circle cx="344.6" cy="277.6" r="13"/><circle cx="301" cy="339.9" r="13"/>
+      <circle cx="204.4" cy="335.7" r="13"/><circle cx="166" cy="262" r="13"/>
+    </g>
+    <circle cx="256" cy="262" r="34" fill="url(#bnode)" filter="url(#bgC)"/>
+    <g filter="url(#bgR)">
+      <line x1="116" y1="116" x2="221.4" y2="225.7" stroke="url(#bbolt)" stroke-width="16" stroke-linecap="round"/>
+      <path d="M 246 252 L 211.9 234.6 L 230.9 216.8 Z" fill="#FF6A72"/>
+    </g>
+    <g stroke="#FF6A72" stroke-width="4.5" stroke-linecap="round" opacity="0.95">
+      <line x1="246" y1="252" x2="266" y2="246"/><line x1="246" y1="252" x2="258" y2="270"/><line x1="246" y1="252" x2="236" y2="266"/>
+    </g>
+    <circle cx="246" cy="252" r="5" fill="#FF8A90"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="312" y="116" font-family="'SF Pro Display','Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif" font-size="17" letter-spacing="4" font-weight="600" fill="#2DD4BF" opacity="0.9">CURATED LLM &amp; GENAI ATTACK CATALOG</text>
+  <text x="310" y="178" font-family="'SF Pro Display','Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif" font-size="62" font-weight="800" fill="#E6EDF3">Awesome LLM <tspan fill="#FF6A72">Attacks</tspan></text>
+  <text x="312" y="216" font-family="'SF Pro Display','Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif" font-size="22" font-weight="500" fill="#8B98A5">Framework-mapped attack techniques for LLM &amp; GenAI systems</text>
+
+  <!-- mono ID chip -->
+  <rect x="312" y="238" width="232" height="38" rx="10" fill="#0B0E14" stroke="#30363D" stroke-width="1.5"/>
+  <text x="330" y="263" font-family="'SF Mono','JetBrains Mono','Fira Code',ui-monospace,monospace" font-size="18" font-weight="600" fill="#2DD4BF">LLM-ATTK-GGNN</text>
+  <text x="566" y="263" font-family="'SF Pro Display','Segoe UI',system-ui,sans-serif" font-size="16" font-weight="500" fill="#6E7681">OWASP · MITRE ATLAS · OWASP ASI</text>
+</svg>
