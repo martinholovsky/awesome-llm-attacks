@@ -1,0 +1,106 @@
+name: "New LLM/GenAI attack technique"
+description: "Propose an attack class we're missing, or a significant variant of an existing one."
+title: "[Technique] <short name>"
+labels: ["new-technique"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep this catalog complete. Please fill this in so a maintainer can drop it
+        straight into a `## Group` table. **Primary-source citations are required.** Keep it vendor-neutral
+        and defensively framed — this is a knowledge base for defenders and red-teamers, not an exploit dump.
+
+        Before opening: search [existing techniques](https://github.com/martinholovsky/awesome-llm-attacks#readme)
+        to make sure it isn't already covered under a different name.
+
+  - type: input
+    id: technique-name
+    attributes:
+      label: Technique name
+      description: Short, recognisable name. Include the common acronym if there is one.
+      placeholder: "e.g. Tokenizer Splitting Injection (TSI)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: group
+    attributes:
+      label: Group
+      description: Which existing group does this best fit? Pick "New group" only for a genuinely new class.
+      options:
+        - "1 — Prompt Injection (Direct, Indirect, Stored)"
+        - "2 — Jailbreaking & Guardrail Evasion"
+        - "3 — Encoding, Obfuscation & Tokenizer-Layer Attacks"
+        - "4 — Multimodal & Cross-Modal Attacks"
+        - "5 — Training-Phase Poisoning, Backdoors & Fine-Tuning"
+        - "6 — Privacy & Confidentiality"
+        - "7 — System & Application Layer"
+        - "8 — Agentic, Multi-Agent & MCP"
+        - "9 — Availability & Resource"
+        - "10 — Trust & Reliability"
+        - "11 — Reasoning-Model / Chain-of-Thought-Specific"
+        - "New group (explain below)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (one to two sentences)
+      description: What is the attack mechanism? Be specific about *how* it works, not just its effect.
+      placeholder: "Splits a malicious instruction across token boundaries so guardrail classifiers miss it while the model still reconstructs intent."
+    validations:
+      required: true
+
+  - type: textarea
+    id: framework-mappings
+    attributes:
+      label: Framework mappings
+      description: Map to the security frameworks. Use real IDs and verify them. Leave a dash where none applies.
+      value: |
+        - OWASP LLM Top 10:
+        - OWASP ASI (Agentic):
+        - MITRE ATLAS (AML.T...):
+        - MCP security:
+    validations:
+      required: true
+
+  - type: textarea
+    id: mitigations
+    attributes:
+      label: Mitigations
+      description: Practical defensive controls a defender could apply. Short clauses, semicolon-separated.
+      placeholder: "Normalise/canonicalise input pre-classification; intent-aware filtering; tokenizer-robust guardrails."
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References (primary sources, with URLs)
+      description: At least one. Prefer papers, advisories, or framework docs over blog summaries.
+      placeholder: |
+        - arXiv 25XX.XXXXX (Title, Month Year): https://arxiv.org/abs/25XX.XXXXX
+        - Vendor/OWASP advisory: https://...
+    validations:
+      required: true
+
+  - type: textarea
+    id: why-missing
+    attributes:
+      label: Why this belongs in the catalog
+      description: Optional. What makes it distinct from existing entries? Real-world cases, novelty, or impact.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: ground-rules
+    attributes:
+      label: Ground rules
+      options:
+        - label: I searched the catalog and this isn't already covered (possibly under another name).
+          required: true
+        - label: It's described vendor-neutrally and defensively — no product pitches, no operational exploit code.
+          required: true
+        - label: I included at least one primary-source citation with a working URL.
+          required: true

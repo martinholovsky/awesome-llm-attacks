@@ -3,11 +3,22 @@
 Thanks for helping build a vendor-neutral catalog of LLM/GenAI attack techniques.
 
 ## How to contribute
-- **Add a technique:** append a row to the relevant `## Group` table with: a new `LLM-ATTK-NNN` ID
-  (next free number), the technique name, framework mappings (OWASP LLM/ASI, MITRE ATLAS, MCP…), a one-line
-  description, mitigations, and at least one reference.
+- **Don't want to touch Markdown?** Open a [New attack technique issue](https://github.com/martinholovsky/awesome-llm-attacks/issues/new?template=new-attack-technique.yml)
+  and fill in the form — a maintainer will turn it into a table row.
+- **Add a technique via PR:** append a row to the relevant `## Group` table with: a new `LLM-ATTK-GGNN` ID
+  (`GG` = group, `NN` = next free number in that group), the technique name, framework mappings (OWASP LLM/ASI,
+  MITRE ATLAS, MCP…), a one-line description, mitigations, and at least one reference.
 - **Improve an entry:** tighten descriptions, add framework mappings, add primary-source references, fix errors.
 - **Propose a new group** only for a genuinely new class of attack.
+
+### Row template (copy, fill, paste into the right group table)
+
+```
+| LLM-ATTK-GGNN | <technique name> | <OWASP LLMxx; ATLAS AML.Txxxx; ASIxx; MCP> | <one-line mechanism> | <mitigations; semicolon-separated> | <Name: [arXiv 25XX.XXXXX](https://arxiv.org/abs/25XX.XXXXX)> |
+```
+
+Column order is **ID | Technique | Framework | Description | Mitigation | References**. If a reference URL is
+already cited elsewhere in the README, write the repeat as plain text (no link) — the catalog avoids duplicate links.
 
 ## Ground rules
 - **Vendor-neutral.** No product pitches or coverage claims for specific tools.
