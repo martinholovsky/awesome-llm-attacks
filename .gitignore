@@ -1,1 +1,3 @@
 .DS_Store
+# Restart-volatile artifacts rescued from /tmp (backups, scratch) — not source.
+tmp/
