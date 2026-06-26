@@ -25,7 +25,7 @@ CC-BY-4.0.
 
 ## Contents
 
-- [Framework crosswalk (group ↔ OWASP ↔ MITRE ATLAS v5.4.0)](#framework-crosswalk-group--owasp--mitre-atlas-v540)
+- [Framework crosswalk (group ↔ OWASP ↔ MITRE ATLAS)](#framework-crosswalk-group--owasp--mitre-atlas)
 - [Group 1 — Prompt Injection (Direct, Indirect, Stored)](#group-1--prompt-injection-direct-indirect-stored)
 - [Group 2 — Jailbreaking & Guardrail Evasion](#group-2--jailbreaking--guardrail-evasion)
 - [Group 3 — Encoding, Obfuscation & Tokenizer-Layer Attacks](#group-3--encoding-obfuscation--tokenizer-layer-attacks)
@@ -39,26 +39,34 @@ CC-BY-4.0.
 - [Group 11 — Reasoning-Model / Chain-of-Thought-Specific](#group-11--reasoning-model--chain-of-thought-specific)
 - [License & Attribution](#license--attribution)
 
-## Framework crosswalk (group ↔ OWASP ↔ MITRE ATLAS v5.4.0)
+## Framework crosswalk (group ↔ OWASP ↔ MITRE ATLAS)
 
-Per-row cells carry the specific IDs; this maps each **group** to the frameworks for orientation. OWASP **ASI**
-(Agentic Security Initiative Top 10) was published 2025-12-09; MITRE **ATLAS v5.4.0** (Feb 2026) added agent-focused
-techniques (AI-Agent Context Poisoning, Memory Manipulation, Thread Injection, Modify AI Agent Configuration,
-Publish Poisoned AI Agent Tool, RAG Poisoning, False RAG Entry Injection, Escape to Host).
+Per-row cells carry the specific IDs; this maps each **group** to the frameworks for orientation. The IDs below
+are the **union of the per-row cross-references** in each group. OWASP **LLM Top 10** = 2025; OWASP **ASI**
+(Agentic Security Initiative Top 10) = 2025-12-09; OWASP **MCP Top 10** = 2025 (beta); **MITRE ATLAS** technique
+IDs refreshed against the live matrix (`atlas.mitre.org/techniques`, retrieved 2026-06-27), which now carries the
+LLM/agent expansion through `AML.T0112` (AI-Agent Context Poisoning, Manipulate User LLM Chat History, RAG
+Poisoning, False RAG Entry Injection, LLM Prompt Obfuscation, Extract LLM System Prompt, LLM Response Rendering,
+Exfiltration via AI Agent Tool Invocation, AI Supply Chain Rug Pull, Exploitation for Defense Evasion, …).
+`AML.T0051` parent covers Direct/Indirect/Triggered sub-techniques (`.000/.001/.002`).
 
-| Group                       | OWASP LLM Top 10 | OWASP ASI (2026)              | MITRE ATLAS (v5.4.0)                                                                             |
-| --------------------------- | ---------------- | ----------------------------- | ------------------------------------------------------------------------------------------------ |
-| 1 Prompt Injection          | LLM01            | ASI01, ASI06                  | AML.T0051; RAG Poisoning; False RAG Entry Injection                                              |
-| 2 Jailbreaking              | LLM01            | —                             | AML.T0054 (LLM Jailbreak)                                                                        |
-| 3 Encoding/Obfuscation      | LLM01            | —                             | AML.T0054, AML.T0043 (Craft Adversarial Data)                                                    |
-| 4 Multimodal                | LLM01            | ASI02                         | AML.T0043                                                                                        |
-| 5 Poisoning/Supply-chain    | LLM03, LLM04     | ASI04                         | AML.T0010, AML.T0020, AML.T0018; Publish Poisoned AI Agent Tool                                  |
-| 6 Privacy & Confidentiality | LLM02, LLM07     | —                             | AML.T0024 (Exfiltration via ML Inference)                                                        |
-| 7 System & Application      | LLM05            | ASI05                         | Escape to Host                                                                                   |
-| 8 Agentic/Multi-Agent/MCP   | LLM06            | ASI01-03, ASI06, ASI07, ASI10 | AI-Agent Context Poisoning; Memory Manipulation; Thread Injection; Modify AI Agent Configuration |
-| 9 Availability & Resource   | LLM10            | ASI08                         | AML.T0029 (Denial of ML Service)                                                                 |
-| 10 Trust & Reliability      | LLM09            | ASI08, ASI09                  | —                                                                                                |
-| 11 Reasoning-Model / CoT    | LLM01, LLM10     | —                             | AML.T0054                                                                                        |
+| Group                       | OWASP LLM            | OWASP ASI (2026)                   | OWASP MCP (2025)            | MITRE ATLAS                                                                                                        |
+| --------------------------- | -------------------- | ---------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| 1 Prompt Injection          | LLM01, LLM08         | —                                  | —                          | AML.T0015, T0051, T0066, T0068, T0070, T0071, T0093, T0094, T0107                                                  |
+| 2 Jailbreaking              | LLM01, LLM03         | —                                  | —                          | AML.T0018, T0043, T0051, T0054, T0092                                                                              |
+| 3 Encoding/Obfuscation      | LLM01                | —                                  | —                          | AML.T0054, T0068                                                                                                   |
+| 4 Multimodal                | LLM01                | ASI01                              | —                          | AML.T0051, T0054                                                                                                   |
+| 5 Poisoning/Supply-chain    | LLM02-05, LLM08      | ASI04, ASI06                       | —                          | AML.T0010, T0018, T0020                                                                                            |
+| 6 Privacy & Confidentiality | LLM02, LLM07, LLM08, LLM10 | —                            | —                          | AML.T0024, T0048, T0051, T0056, T0057, T0069                                                                       |
+| 7 System & Application      | LLM03, LLM05, LLM06, LLM08 | ASI01, ASI04, ASI05          | MCP05                      | AML.T0010, T0050                                                                                                   |
+| 8 Agentic/Multi-Agent/MCP   | LLM01, LLM06         | ASI01-08, ASI10                    | MCP01-07, MCP09, MCP10     | AML.T0020, T0024, T0049, T0051, T0053, T0061, T0067, T0077, T0080, T0081, T0086, T0099, T0109, T0110              |
+| 9 Availability & Resource   | LLM10                | ASI08                              | —                          | AML.T0029                                                                                                          |
+| 10 Trust & Reliability      | LLM09                | ASI08, ASI09                       | —                          | AML.T0048, T0060, T0062                                                                                            |
+| 11 Reasoning-Model / CoT    | LLM01, LLM04, LLM10  | —                                  | —                          | AML.T0018, T0029, T0051, T0054                                                                                     |
+
+> MCP08 (Lack of Audit & Telemetry) is a defensive/telemetry requirement with no offensive technique, so it maps
+> to no group. The ATLAS recon / resource-development / classical-ML / credential / agent-infrastructure techniques
+> (T0000–T0048 block and the credential/infra IDs) are intentionally out of scope for a content-layer catalog.
 
 ---
 
