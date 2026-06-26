@@ -14,7 +14,7 @@ taxonomy and defensive controls:
 - **OWASP** — [LLM Top 10](https://genai.owasp.org/llm-top-10/) (`LLM01`…`LLM10`)
 - **MITRE ATLAS** — adversarial ML technique IDs (`AML.T….`)
 - **OWASP Agentic Security Initiative (ASI)** — agentic threats (`ASI…`)
-- **MCP security** — Model Context Protocol threats (tool poisoning, line-jumping, etc.)
+- **OWASP MCP Top 10** — Model Context Protocol threats (`MCP01`…`MCP10`; tool poisoning, line-jumping, etc.)
 
 Each entry: a stable **`LLM-ATTK-GGNN`** ID (`GG` = group 01–11, `NN` = technique within the group 01–99), the technique, framework mappings, a short description, mitigations,
 and references. **Contributions welcome** — see contributing.md. Licensed
