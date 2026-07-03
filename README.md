@@ -15,6 +15,7 @@ taxonomy and defensive controls:
 - **MITRE ATLAS** — adversarial ML technique IDs (`AML.T….`)
 - **OWASP Agentic Security Initiative (ASI)** — agentic threats (`ASI…`)
 - **OWASP MCP Top 10** — Model Context Protocol threats (`MCP01`…`MCP10`; tool poisoning, line-jumping, etc.)
+- **Google SAIF 2.0** — [Secure AI Framework risk map](https://saif.google/secure-ai-framework/saif-map) (agent-focused; risk codes `PIJ`, `DP`, `MEV`, `SDD`, `RA`, `MXF`, …)
 
 Each entry: a stable **`LLM-ATTK-GGNN`** ID (`GG` = group 01–11, `NN` = technique within the group 01–99), the technique, framework mappings, a short description, mitigations,
 and references. **Contributions welcome** — see contributing.md. Licensed
@@ -43,30 +44,63 @@ CC-BY-4.0.
 
 Per-row cells carry the specific IDs; this maps each **group** to the frameworks for orientation. The IDs below
 are the **union of the per-row cross-references** in each group. OWASP **LLM Top 10** = 2025; OWASP **ASI**
-(Agentic Security Initiative Top 10) = 2025-12-09; OWASP **MCP Top 10** = 2025 (beta); **MITRE ATLAS** technique
+(Top 10 for Agentic Applications 2026, published 2025-12-09); OWASP **MCP Top 10** = 2025 (beta); **Google SAIF**
+= 2.0 (agent-focused; risk-map retrieved 2026-07-03); **MITRE ATLAS** technique
 IDs refreshed against the live matrix (`atlas.mitre.org/techniques`, retrieved 2026-06-27), which now carries the
 LLM/agent expansion through `AML.T0112` (AI-Agent Context Poisoning, Manipulate User LLM Chat History, RAG
 Poisoning, False RAG Entry Injection, LLM Prompt Obfuscation, Extract LLM System Prompt, LLM Response Rendering,
 Exfiltration via AI Agent Tool Invocation, AI Supply Chain Rug Pull, Exploitation for Defense Evasion, …).
 `AML.T0051` parent covers Direct/Indirect/Triggered sub-techniques (`.000/.001/.002`).
 
-| Group                       | OWASP LLM            | OWASP ASI (2026)                   | OWASP MCP (2025)            | MITRE ATLAS                                                                                                        |
-| --------------------------- | -------------------- | ---------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| 1 Prompt Injection          | LLM01, LLM08         | —                                  | —                          | AML.T0015, T0051, T0066, T0068, T0070, T0071, T0093, T0094, T0107                                                  |
-| 2 Jailbreaking              | LLM01, LLM03         | —                                  | —                          | AML.T0018, T0043, T0051, T0054, T0092                                                                              |
-| 3 Encoding/Obfuscation      | LLM01                | —                                  | —                          | AML.T0054, T0068                                                                                                   |
-| 4 Multimodal                | LLM01                | ASI01                              | —                          | AML.T0051, T0054                                                                                                   |
-| 5 Poisoning/Supply-chain    | LLM02-05, LLM08      | ASI04, ASI06                       | —                          | AML.T0010, T0018, T0020                                                                                            |
-| 6 Privacy & Confidentiality | LLM02, LLM07, LLM08, LLM10 | —                            | —                          | AML.T0024, T0048, T0051, T0056, T0057, T0069                                                                       |
-| 7 System & Application      | LLM03, LLM05, LLM06, LLM08 | ASI01, ASI04, ASI05          | MCP05                      | AML.T0010, T0050                                                                                                   |
-| 8 Agentic/Multi-Agent/MCP   | LLM01, LLM06         | ASI01-08, ASI10                    | MCP01-07, MCP09, MCP10     | AML.T0020, T0024, T0049, T0051, T0053, T0061, T0067, T0077, T0080, T0081, T0086, T0099, T0109, T0110              |
-| 9 Availability & Resource   | LLM10                | ASI08                              | —                          | AML.T0029                                                                                                          |
-| 10 Trust & Reliability      | LLM09                | ASI08, ASI09                       | —                          | AML.T0048, T0060, T0062                                                                                            |
-| 11 Reasoning-Model / CoT    | LLM01, LLM04, LLM10  | —                                  | —                          | AML.T0018, T0029, T0051, T0054                                                                                     |
+| Group                       | OWASP LLM            | OWASP ASI (2026)                   | OWASP MCP (2025)            | Google SAIF 2.0         | MITRE ATLAS                                                                                                        |
+| --------------------------- | -------------------- | ---------------------------------- | -------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| 1 Prompt Injection          | LLM01, LLM08         | —                                  | —                          | PIJ, DP, MEV            | AML.T0015, T0051, T0066, T0068, T0070, T0071, T0093, T0094, T0107                                                  |
+| 2 Jailbreaking              | LLM01, LLM03         | —                                  | —                          | PIJ, MEV, MST           | AML.T0018, T0043, T0051, T0054, T0092                                                                              |
+| 3 Encoding/Obfuscation      | LLM01                | —                                  | —                          | PIJ, MEV                | AML.T0015, T0054, T0068                                                                                            |
+| 4 Multimodal                | LLM01                | ASI01                              | —                          | PIJ, MEV                | AML.T0051, T0054                                                                                                   |
+| 5 Poisoning/Supply-chain    | LLM02-05, LLM08      | ASI04, ASI06                       | —                          | DP, MST, UTD            | AML.T0010, T0018, T0020                                                                                            |
+| 6 Privacy & Confidentiality | LLM02, LLM07, LLM08, LLM10 | —                            | —                          | SDD, ISD, MXF, MRE      | AML.T0024, T0048, T0051, T0056, T0057, T0069                                                                       |
+| 7 System & Application      | LLM03, LLM05, LLM06, LLM08 | ASI01, ASI04, ASI05          | MCP05                      | IMO, IIC, RA            | AML.T0010, T0050                                                                                                   |
+| 8 Agentic/Multi-Agent/MCP   | LLM01, LLM06         | ASI01-08, ASI10                    | MCP01-07, MCP09, MCP10     | RA, PIJ, IIC, SDD       | AML.T0020, T0024, T0049, T0051, T0053, T0061, T0067, T0077, T0080, T0081, T0086, T0099, T0109, T0110              |
+| 9 Availability & Resource   | LLM10                | ASI08                              | —                          | DMS, DP                 | AML.T0029                                                                                                          |
+| 10 Trust & Reliability      | LLM09                | ASI08, ASI09                       | —                          | IMO, RA                 | AML.T0048, T0060, T0062                                                                                            |
+| 11 Reasoning-Model / CoT    | LLM01, LLM04, LLM10  | —                                  | —                          | PIJ, MEV, DMS, DP       | AML.T0018, T0029, T0051, T0054                                                                                     |
 
 > MCP08 (Lack of Audit & Telemetry) is a defensive/telemetry requirement with no offensive technique, so it maps
 > to no group. The ATLAS recon / resource-development / classical-ML / credential / agent-infrastructure techniques
 > (T0000–T0048 block and the credential/infra IDs) are intentionally out of scope for a content-layer catalog.
+>
+> **Google SAIF 2.0 risk codes** (attack-relevant subset): `PIJ` Prompt Injection · `DP` Data Poisoning ·
+> `MST` Model Source Tampering · `UTD` Unauthorized Training Data · `MXF` Model Exfiltration · `MRE` Model Reverse
+> Engineering · `MEV` Model Evasion · `SDD` Sensitive Data Disclosure · `ISD` Inferred Sensitive Data ·
+> `IMO` Insecure Model Output · `IIC` Insecure Integrated Component · `DMS` Denial of ML Service ·
+> `RA` Rogue Actions. SAIF's remaining risks (`EDH` Excessive Data Handling, `MDT` Model Deployment Tampering) are
+> governance/deployment-plane controls without a content-layer offensive technique, so they map to no group.
+
+### Framework coverage
+
+How much of each framework's threat enumeration is reachable from this catalog. "Covered" = the framework item maps
+to at least one technique group above. Percentages are over each framework's **own** item count, and name the exact
+version/revision used.
+
+| Framework                                   | Version / revision used          | Coverage        | Not covered (why)                                                        |
+| ------------------------------------------- | -------------------------------- | --------------- | ------------------------------------------------------------------------ |
+| OWASP Top 10 for LLM Applications           | 2025                             | 10 / 10 (100%)  | —                                                                        |
+| OWASP Top 10 for Agentic Applications (ASI) | 2026 (published 2025-12-09)      | 10 / 10 (100%)  | —                                                                        |
+| OWASP MCP Top 10                            | 2025 (beta)                      | 9 / 10 (90%)    | MCP08 Audit & Telemetry — a detective control, no offensive technique.   |
+| Google SAIF                                 | 2.0 (agent-focused)              | 13 / 15 (87%)   | EDH, MDT — governance/deployment-plane controls, no content-layer attack. |
+| MITRE ATLAS                                 | live matrix (retrieved 2026-06-27) | full LLM/GenAI/agent subset | Classical-ML / recon / resource-dev / credential / infra techniques are intentionally out of scope. |
+
+> **MITRE ATLAS** is not given a single percentage: the matrix (~84 parent techniques) spans the whole adversarial-ML
+> lifecycle, most of which is out of scope for a content-layer LLM catalog. The crosswalk references the full
+> LLM/GenAI/agent-relevant subset (the `AML.T0051`/`T0054` prompt-injection & jailbreak family plus the `T0080`–`T0112`
+> LLM/agent expansion); a percentage over all 84 would understate coverage of the part that applies.
+>
+> **Referenced but not mapped per-row:** **NIST AI 600-1** (GenAI Profile, July 2024) and **NIST SP 800-218A** (SSDF
+> for GenAI, July 2024) are risk/practice frameworks, not attack taxonomies — every attack vector they name is already
+> covered. **BSI** *Generative AI Models – Opportunities and Risks* (v2.0, 2025-02-03; arXiv:2406.04734) and the
+> **ANSSI–BSI** *Design Principles for LLM-based Systems with Zero Trust* (Aug 2025) are cited inline where their risk
+> register (e.g. R20, R21, R27) anchors a specific technique.
 
 ---
 
@@ -125,6 +159,7 @@ Exfiltration via AI Agent Tool Invocation, AI Supply Chain Rug Pull, Exploitatio
 | LLM-ATTK-0311 | MathPrompt (Symbolic Mathematics)                         | OWASP LLM01                  | Encode harmful intent as symbolic math / set-theory; the model decodes it while solving, bypassing NLP safety filters (reported ~73.6% ASR). | Semantic safety evaluation on the decoded symbolic representation; dual-stage analysis of dense math inputs. | [Symbolic Math Jailbreak (arXiv:2409.11445)](https://arxiv.org/abs/2409.11445) |
 | LLM-ATTK-0312 | ArtPrompt (ASCII-Art Jailbreak)                           | OWASP LLM01; ATLAS AML.T0054 | Replace blocked keywords with ASCII art the model decodes but the safety filter does not.                                                    | Visual-in-text pre-classifier; OCR-then-filter the resolved plaintext.                                       | ArtPrompt (arXiv:2402.11753)                                                   |
 | LLM-ATTK-0313 | Cipher / Low-Resource-Language Jailbreak                  | OWASP LLM01                  | Caesar/Base64/Morse ciphers, code-switching, or low-resource languages (Zulu, Hmong) carry harmful intent past English-aligned filters.      | Language-aware safety filters; translate-then-classify; safety fine-tune across long-tail languages.         | Low-Resource Lang Jailbreak (arXiv:2310.02446)                                 |
+| LLM-ATTK-0314 | LLM-Classifier / Moderation Evasion (adversarial perturbation) | OWASP LLM01; ATLAS AML.T0015, AML.T0054 | Meaning-preserving perturbations — typos, homoglyphs, synonym/word-boundary edits, universal adversarial prefixes — make malicious input evade an LLM used as a *discriminative* filter (toxicity/hate-speech moderation, or a guardrail classifier like Llama Guard), so it is misclassified as benign. Defeats detection, unlike generative jailbreaks that elicit prohibited output. | Normalize/sanitize inputs (spell-check, homoglyph fold, embedding-cluster canonicalization); adversarially fine-tune the classifier; defense-in-depth rather than a single LLM filter. | [PRP — guardrail evasion (arXiv:2402.15911)](https://arxiv.org/abs/2402.15911); [TextFooler (arXiv:1907.11932)](https://arxiv.org/abs/1907.11932); [Hate-speech classifier evasion (arXiv:1808.09115)](https://arxiv.org/abs/1808.09115); [BSI Generative AI Models — R27 (arXiv:2406.04734)](https://arxiv.org/abs/2406.04734) |
 
 ## Group 4 — Multimodal & Cross-Modal Attacks
 
@@ -157,6 +192,8 @@ Exfiltration via AI Agent Tool Invocation, AI Supply Chain Rug Pull, Exploitatio
 | LLM-ATTK-0513 | Model Namespace Reuse / Conversion-Service Hijack     | OWASP LLM03; ATLAS AML.T0010                  | Re-register a deleted/transferred model namespace so catalogs (Azure AI Foundry, Vertex AI) re-pull a poisoned model at the original path.                                                                                                                                                                           | Pin to revision/SHA; AI-BOM; signature verification.                                                                   | [Unit 42 — Model Namespace Reuse](https://unit42.paloaltonetworks.com/model-namespace-reuse/)                                                                              |
 | LLM-ATTK-0514 | AgentPoison (Backdoored RAG Memory)                   | OWASP LLM04; OWASP LLM08; ATLAS RAG Poisoning | Constrained-optimization triggers cluster malicious docs in an agent's memory/RAG embedding space; >80% ASR at <0.1% poison rate.                                                                                                                                                                                    | Embedding-cluster anomaly detection; provenance gating on ingested experiences.                                        | [AgentPoison (arXiv:2407.12784)](https://arxiv.org/abs/2407.12784)                                                                                                         |
 | LLM-ATTK-0515 | False RAG Entry Injection / RAG Credential Harvesting | OWASP LLM02; OWASP LLM08; ATLAS               | Insert a fake authoritative RAG entry, or have the agent search its store for inadvertently-ingested secrets (newly-minted MITRE ATLAS techniques).                                                                                                                                                                  | Secret-detection at ingestion; per-document access labels; refuse credential-shaped output.                            | [MITRE ATLAS](https://atlas.mitre.org/)                                                                                                                                    |
+| LLM-ATTK-0516 | Reward-Model / RLHF Preference Poisoning (+ LLM-as-Judge manipulation) | OWASP LLM04; ATLAS AML.T0018, AML.T0020 | Corrupt the *alignment* signal instead of pretraining data: flip or inject preference pairs / poison the reward model (RLHF/DPO/RLAIF) to implant a universal trigger backdoor or steer sentiment — 1–5% poisoned pairs suffice; or inject an optimized string that hijacks an LLM-as-a-judge into scoring attacker output highest (JudgeDeceiver), gaming leaderboards, RLAIF, and tool selection. | Vet/authenticate feedback provenance and cap any single annotator's share; anomaly / label-flip detection on preference data; robust reward-model training; judge ensembles + input sanitization (perplexity / known-answer detection shown insufficient). | [Universal Jailbreak Backdoors from Poisoned Human Feedback (arXiv:2311.14455)](https://arxiv.org/abs/2311.14455); [RLHFPoison (arXiv:2311.09641)](https://arxiv.org/abs/2311.09641); [Best-of-Venom (arXiv:2404.05530)](https://arxiv.org/abs/2404.05530); [JudgeDeceiver (arXiv:2403.17710)](https://arxiv.org/abs/2403.17710); [Cheating Automatic LLM Benchmarks (arXiv:2410.07137)](https://arxiv.org/abs/2410.07137); [BSI Generative AI Models — R20 (arXiv:2406.04734)](https://arxiv.org/abs/2406.04734) |
+| LLM-ATTK-0517 | Pre-processing-Component Poisoning (prompt-rewriter / tokenizer / normalizer) | OWASP LLM03; ATLAS AML.T0010, AML.T0018 | Compromise a pipeline stage that transforms input before it reaches the model — a prompt-rewriter/expander LLM, query enricher, tokenizer, or normalizer — so every input is silently altered (e.g. injecting a brand name into image-generation prompts, or a training-free lexical backdoor planted directly in the tokenizer's embedding dictionary). Model weights stay intact; the pre-processing component is the target. | Integrity-protect and monitor pre-processing scripts/components (cryptographic hashes, signing, logging); vet the trustworthiness of any externally-sourced rewriter/tokenizer; treat pre-processors as part of the model supply chain. | [BSI Generative AI Models — R21 (arXiv:2406.04734)](https://arxiv.org/abs/2406.04734); [TFLexAttack — training-free tokenizer backdoor (arXiv:2302.04116)](https://arxiv.org/abs/2302.04116) |
 
 ## Group 6 — Privacy & Confidentiality
 
