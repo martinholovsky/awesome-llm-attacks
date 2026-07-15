@@ -1,15 +1,14 @@
-# Awesome LLM Attacks [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+<h1 align="center">
+  <a href="https://github.com/martinholovsky/awesome-llm-attacks"><img src="img/banner.svg" alt="Awesome LLM Attacks" width="100%"></a>
+</h1>
 
 <p align="center">
-  <img src="img/banner.svg" alt="Awesome LLM Attacks" width="100%">
+  <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
 </p>
 
-A curated, framework-mapped catalog of **attack techniques against Large Language Models and GenAI systems** —
-prompt injection, jailbreaks, encoding/obfuscation, multimodal, training-phase poisoning, privacy extraction,
-agentic/multi-agent/MCP, availability, trust/reliability, and reasoning-model (chain-of-thought) attacks.
+A curated, framework-mapped catalog of **attack techniques against Large Language Models and GenAI systems** — prompt injection, jailbreaks, encoding/obfuscation, multimodal, training-phase poisoning, privacy extraction, agentic/multi-agent/MCP, availability, trust/reliability, and reasoning-model (chain-of-thought) attacks.
 
-Every technique is cross-referenced to the major security frameworks so you can pivot between offensive
-taxonomy and defensive controls:
+Every technique is cross-referenced to the major security frameworks so you can pivot between offensive taxonomy and defensive controls:
 
 - **OWASP** — [LLM Top 10](https://genai.owasp.org/llm-top-10/) (`LLM01`…`LLM10`)
 - **MITRE ATLAS** — adversarial ML technique IDs (`AML.T….`)
@@ -17,12 +16,9 @@ taxonomy and defensive controls:
 - **OWASP MCP Top 10** — Model Context Protocol threats (`MCP01`…`MCP10`; tool poisoning, line-jumping, etc.)
 - **Google SAIF 2.0** — [Secure AI Framework risk map](https://saif.google/secure-ai-framework/saif-map) (agent-focused; risk codes `PIJ`, `DP`, `MEV`, `SDD`, `RA`, `MXF`, …)
 
-Each entry: a stable **`LLM-ATTK-GGNN`** ID (`GG` = group 01–11, `NN` = technique within the group 01–99), the technique, framework mappings, a short description, mitigations,
-and references. **Contributions welcome** — see contributing.md. Licensed
-CC-BY-4.0.
+Each entry: a stable **`LLM-ATTK-GGNN`** ID (`GG` = group 01–11, `NN` = technique within the group 01–99), the technique, framework mappings, a short description, mitigations, and references. **Contributions welcome** — see contributing.md. Licensed CC-BY-4.0.
 
-> This is a vendor-neutral knowledge base. It describes attack _classes_ for defenders, red-teamers, and
-> researchers — it is not exploit code. Use it to build tests, guardrails, and threat models.
+> This is a vendor-neutral knowledge base. It describes attack _classes_ for defenders, red-teamers, and researchers — it is not exploit code. Use it to build tests, guardrails, and threat models.
 
 ## Contents
 
@@ -38,19 +34,10 @@ CC-BY-4.0.
 - [Group 9 — Availability & Resource](#group-9--availability--resource)
 - [Group 10 — Trust & Reliability](#group-10--trust--reliability)
 - [Group 11 — Reasoning-Model / Chain-of-Thought-Specific](#group-11--reasoning-model--chain-of-thought-specific)
-- [License & Attribution](#license--attribution)
 
 ## Framework crosswalk (group ↔ OWASP ↔ MITRE ATLAS)
 
-Per-row cells carry the specific IDs; this maps each **group** to the frameworks for orientation. The IDs below
-are the **union of the per-row cross-references** in each group. OWASP **LLM Top 10** = 2025; OWASP **ASI**
-(Top 10 for Agentic Applications 2026, published 2025-12-09); OWASP **MCP Top 10** = 2025 (beta); **Google SAIF**
-= 2.0 (agent-focused; risk-map retrieved 2026-07-03); **MITRE ATLAS** technique
-IDs refreshed against the live matrix (`atlas.mitre.org/techniques`, retrieved 2026-06-27), which now carries the
-LLM/agent expansion through `AML.T0112` (AI-Agent Context Poisoning, Manipulate User LLM Chat History, RAG
-Poisoning, False RAG Entry Injection, LLM Prompt Obfuscation, Extract LLM System Prompt, LLM Response Rendering,
-Exfiltration via AI Agent Tool Invocation, AI Supply Chain Rug Pull, Exploitation for Defense Evasion, …).
-`AML.T0051` parent covers Direct/Indirect/Triggered sub-techniques (`.000/.001/.002`).
+Per-row cells carry the specific IDs; this maps each **group** to the frameworks for orientation. The IDs below are the **union of the per-row cross-references** in each group. OWASP **LLM Top 10** = 2025; OWASP **ASI** (Top 10 for Agentic Applications 2026, published 2025-12-09); OWASP **MCP Top 10** = 2025 (beta); **Google SAIF** = 2.0 (agent-focused; risk-map retrieved 2026-07-03); **MITRE ATLAS** technique IDs refreshed against the live matrix (`atlas.mitre.org/techniques`, retrieved 2026-06-27), which now carries the LLM/agent expansion through `AML.T0112` (AI-Agent Context Poisoning, Manipulate User LLM Chat History, RAG Poisoning, False RAG Entry Injection, LLM Prompt Obfuscation, Extract LLM System Prompt, LLM Response Rendering, Exfiltration via AI Agent Tool Invocation, AI Supply Chain Rug Pull, Exploitation for Defense Evasion, …). `AML.T0051` parent covers Direct/Indirect/Triggered sub-techniques (`.000/.001/.002`).
 
 | Group                       | OWASP LLM                  | OWASP ASI (2026)    | OWASP MCP (2025)       | Google SAIF 2.0    | MITRE ATLAS                                                                                          |
 | --------------------------- | -------------------------- | ------------------- | ---------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
@@ -66,22 +53,13 @@ Exfiltration via AI Agent Tool Invocation, AI Supply Chain Rug Pull, Exploitatio
 | 10 Trust & Reliability      | LLM09                      | ASI08, ASI09        | —                      | IMO, RA            | AML.T0048, T0060, T0062                                                                              |
 | 11 Reasoning-Model / CoT    | LLM01, LLM04, LLM10        | —                   | —                      | PIJ, MEV, DMS, DP  | AML.T0018, T0029, T0051, T0054                                                                       |
 
-> MCP08 (Lack of Audit & Telemetry) is a defensive/telemetry requirement with no offensive technique, so it maps
-> to no group. The ATLAS recon / resource-development / classical-ML / credential / agent-infrastructure techniques
-> (T0000–T0048 block and the credential/infra IDs) are intentionally out of scope for a content-layer catalog.
+> MCP08 (Lack of Audit & Telemetry) is a defensive/telemetry requirement with no offensive technique, so it maps to no group. The ATLAS recon / resource-development / classical-ML / credential / agent-infrastructure techniques (T0000–T0048 block and the credential/infra IDs) are intentionally out of scope for a content-layer catalog.
 >
-> **Google SAIF 2.0 risk codes** (attack-relevant subset): `PIJ` Prompt Injection · `DP` Data Poisoning ·
-> `MST` Model Source Tampering · `UTD` Unauthorized Training Data · `MXF` Model Exfiltration · `MRE` Model Reverse
-> Engineering · `MEV` Model Evasion · `SDD` Sensitive Data Disclosure · `ISD` Inferred Sensitive Data ·
-> `IMO` Insecure Model Output · `IIC` Insecure Integrated Component · `DMS` Denial of ML Service ·
-> `RA` Rogue Actions. SAIF's remaining risks (`EDH` Excessive Data Handling, `MDT` Model Deployment Tampering) are
-> governance/deployment-plane controls without a content-layer offensive technique, so they map to no group.
+> **Google SAIF 2.0 risk codes** (attack-relevant subset): `PIJ` Prompt Injection · `DP` Data Poisoning · `MST` Model Source Tampering · `UTD` Unauthorized Training Data · `MXF` Model Exfiltration · `MRE` Model Reverse Engineering · `MEV` Model Evasion · `SDD` Sensitive Data Disclosure · `ISD` Inferred Sensitive Data · `IMO` Insecure Model Output · `IIC` Insecure Integrated Component · `DMS` Denial of ML Service · `RA` Rogue Actions. SAIF's remaining risks (`EDH` Excessive Data Handling, `MDT` Model Deployment Tampering) are governance/deployment-plane controls without a content-layer offensive technique, so they map to no group.
 
 ### Framework coverage
 
-How much of each framework's threat enumeration is reachable from this catalog. "Covered" = the framework item maps
-to at least one technique group above. Percentages are over each framework's **own** item count, and name the exact
-version/revision used.
+How much of each framework's threat enumeration is reachable from this catalog. "Covered" = the framework item maps to at least one technique group above. Percentages are over each framework's **own** item count, and name the exact version/revision used.
 
 | Framework                                   | Version / revision used            | Coverage                    | Not covered (why)                                                                                   |
 | ------------------------------------------- | ---------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -91,18 +69,9 @@ version/revision used.
 | Google SAIF                                 | 2.0 (agent-focused)                | 13 / 15 (87%)               | EDH, MDT — governance/deployment-plane controls, no content-layer attack.                           |
 | MITRE ATLAS                                 | live matrix (retrieved 2026-06-27) | full LLM/GenAI/agent subset | Classical-ML / recon / resource-dev / credential / infra techniques are intentionally out of scope. |
 
-> **MITRE ATLAS** is not given a single percentage: the matrix (~84 parent techniques) spans the whole adversarial-ML
-> lifecycle, most of which is out of scope for a content-layer LLM catalog. The crosswalk references the full
-> LLM/GenAI/agent-relevant subset (the `AML.T0051`/`T0054` prompt-injection & jailbreak family plus the `T0080`–`T0112`
-> LLM/agent expansion); a percentage over all 84 would understate coverage of the part that applies.
+> **MITRE ATLAS** is not given a single percentage: the matrix (~84 parent techniques) spans the whole adversarial-ML lifecycle, most of which is out of scope for a content-layer LLM catalog. The crosswalk references the full LLM/GenAI/agent-relevant subset (the `AML.T0051`/`T0054` prompt-injection & jailbreak family plus the `T0080`–`T0112` LLM/agent expansion); a percentage over all 84 would understate coverage of the part that applies.
 >
-> **Referenced but not mapped per-row:** **NIST AI 600-1** (GenAI Profile, July 2024) and **NIST SP 800-218A** (SSDF
-> for GenAI, July 2024) are risk/practice frameworks, not attack taxonomies — every attack vector they name is already
-> covered. **BSI** _Generative AI Models – Opportunities and Risks_ (v2.0, 2025-02-03; arXiv:2406.04734) and the
-> **ANSSI–BSI** _Design Principles for LLM-based Systems with Zero Trust_ (Aug 2025) are cited inline where their risk
-> register (e.g. R20, R21, R27) anchors a specific technique. **CWE** weakness IDs and **CVE** disclosures are likewise
-> cited inline in the per-row Framework/References cells where a specific weakness anchors a technique (e.g.
-> CWE-61/CWE-451 for GhostApproval `0818`, CVE-2025-68664 for LangGrinch `0707`) rather than mapped as a group taxonomy.
+> **Referenced but not mapped per-row:** **NIST AI 600-1** (GenAI Profile, July 2024) and **NIST SP 800-218A** (SSDF for GenAI, July 2024) are risk/practice frameworks, not attack taxonomies — every attack vector they name is already covered. **BSI** _Generative AI Models – Opportunities and Risks_ (v2.0, 2025-02-03; arXiv:2406.04734) and the **ANSSI–BSI** _Design Principles for LLM-based Systems with Zero Trust_ (Aug 2025) are cited inline where their risk register (e.g. R20, R21, R27) anchors a specific technique. **CWE** weakness IDs and **CVE** disclosures are likewise cited inline in the per-row Framework/References cells where a specific weakness anchors a technique (e.g. CWE-61/CWE-451 for GhostApproval `0818`, CVE-2025-68664 for LangGrinch `0707`) rather than mapped as a group taxonomy.
 
 ---
 
@@ -268,9 +237,7 @@ version/revision used.
 
 ## Group 11 — Reasoning-Model / Chain-of-Thought-Specific
 
-> New surface for large reasoning models (o1/o3, DeepSeek-R1, Gemini Thinking, Claude extended thinking):
-> attacks that exploit the **exposed or extended intermediate reasoning trace** itself — as a jailbreak
-> vector, a resource sink, or a backdoor target. Distinct from the output-targeting jailbreaks (Group 2),
+> New surface for large reasoning models (o1/o3, DeepSeek-R1, Gemini Thinking, Claude extended thinking): attacks that exploit the **exposed or extended intermediate reasoning trace** itself — as a jailbreak vector, a resource sink, or a backdoor target. Distinct from the output-targeting jailbreaks (Group 2),
 
 | ID            | Technique                                      | Framework                        | Description                                                                                                                                                                                                                                                                       | Mitigation                                                                                                                 | References                                                                                                               |
 | ------------- | ---------------------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -285,17 +252,13 @@ version/revision used.
 
 ## Contributing
 
-New techniques, better framework mappings, fresh references, and corrections are all welcome. Keep entries
-vendor-neutral and citation-backed. See [contributing.md](contributing.md).
+New techniques, better framework mappings, fresh references, and corrections are all welcome. Keep entries vendor-neutral and citation-backed. See [contributing.md](contributing.md).
 
-## License & Attribution
-
-Licensed under [**CC-BY-4.0**](LICENSE) — you may share and adapt this catalog **for any purpose,
-including commercial and private products**, as long as you give appropriate credit.
+## Footnotes
 
 When you reuse this material, please credit it like this:
 
-> "Awesome LLM Attacks" by Martin Holovsky, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — https://github.com/martinholovsky/awesome-llm-attacks
+> "Awesome LLM Attacks" by Martin Holovsky — https://github.com/martinholovsky/awesome-llm-attacks
 
 BibTeX:
 
