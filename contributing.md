@@ -26,4 +26,17 @@ already cited elsewhere in the README, write the repeat as plain text (no link) 
 - **Defensive framing.** Describe the technique class and its mitigations — this is not an exploit repo.
 - **One technique per row.** Keep IDs stable; never renumber existing entries.
 
+## Before you open a PR
+
+Run these from the repo root and make sure both are clean:
+
+```sh
+npx --yes prettier@latest --write README.md   # align table pipes
+npx --yes awesome-lint                          # must exit 0
+```
+
+A few formatting rules the linter won't always flag but reviewers enforce: no
+hard-wrapping (one line per paragraph), and no duplicate links — if a URL is
+already cited in the README, write the repeat as plain text (no link).
+
 Open a PR with a clear title. Maintainers review for accuracy, neutrality, and citations.
