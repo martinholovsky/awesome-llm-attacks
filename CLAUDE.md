@@ -67,9 +67,10 @@ git tag -a vX.Y.Z -m "..." && git push origin vX.Y.Z
 gh release create vX.Y.Z --title "..." --notes "..."
 ```
 
-Latest tag: **v1.2.2** (2026-07-15). Unreleased work sits on `main` — cut a
-release when a batch of technique rows lands, and describe it in the release
-notes rather than a changelog file.
+Latest tag: **v1.3.0** (2026-07-28). Cut a release when a batch of technique
+rows lands, and describe it in the release notes rather than a changelog file.
+Bump this line in the same commit that precedes the tag, so the tagged tree
+does not claim an older release as latest.
 
 Commits carry a `Co-Authored-By:` trailer naming **the model that actually did
 the work** (`Claude Opus 5 (1M context)`, `Claude Fable 5`, …) — do not copy a
