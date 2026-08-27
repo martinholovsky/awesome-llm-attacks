@@ -1,3 +1,6 @@
 .DS_Store
 # Restart-volatile artifacts rescued from /tmp (backups, scratch) — not source.
 tmp/
+# Playwright MCP page snapshots and console logs — written into the repo root when
+# fetching sources that block WebFetch (arstechnica.com, medium.com). Not source.
+.playwright-mcp/
