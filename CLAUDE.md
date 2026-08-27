@@ -67,7 +67,7 @@ git tag -a vX.Y.Z -m "..." && git push origin vX.Y.Z
 gh release create vX.Y.Z --title "..." --notes "..."
 ```
 
-Latest tag: **v1.3.0** (2026-07-28). Cut a release when a batch of technique
+Latest tag: **v1.3.1** (2026-08-27). Cut a release when a batch of technique
 rows lands, and describe it in the release notes rather than a changelog file.
 Bump this line in the same commit that precedes the tag, so the tagged tree
 does not claim an older release as latest.
